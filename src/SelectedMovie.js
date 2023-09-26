@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import StarRating from "./StarRating";
 import Loader from "./loader";
 export default function SelectedMovie({
@@ -15,7 +15,7 @@ export default function SelectedMovie({
     .map((movie) => movie.imdbID)
     .includes(selectedId);
   const userRating = watched.find(
-    (movie) => movie.imdbID == selectedId
+    (movie) => movie.imdbID === selectedId
   )?.userRating;
   function onAddNewWatchedMovie() {
     const NewMovieObj = {
