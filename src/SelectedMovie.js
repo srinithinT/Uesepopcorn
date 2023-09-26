@@ -31,17 +31,20 @@ export default function SelectedMovie({
     setSelectedID(null);
   }
 
-  useEffect(function () {
-    function Callback(e) {
-      if (e.key === "Escape" || e.key === "Backspace") {
-        setSelectedID(null);
+  useEffect(
+    function () {
+      function Callback(e) {
+        if (e.key === "Escape" || e.key === "Backspace") {
+          setSelectedID(null);
+        }
       }
-    }
-    document.addEventListener("keydown", Callback);
-    return function () {
-      document.removeEventListener("keydown", Callback);
-    };
-  }, []);
+      document.addEventListener("keydown", Callback);
+      return function () {
+        document.removeEventListener("keydown", Callback);
+      };
+    },
+    [setSelectedID]
+  );
   useEffect(
     function () {
       if (!movie.Title) return;
